@@ -1,4 +1,4 @@
-# 誰かの記念日（仮）
+# Shareversary
 
 ## サイト概要
 
@@ -28,7 +28,11 @@
 
 
 ## 設計書
-ER図　https://drive.google.com/file/d/193Q385tD8bDUOca7sad5_mnWdITxh8Cu/view?usp=sharing
+[ER図](https://drive.google.com/file/d/193Q385tD8bDUOca7sad5_mnWdITxh8Cu/view?usp=sharing)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1f2lNVyXqcQfgADfrtDCo6fuE-Itf1Kc_OgUSwtZbE10/edit#gid=561761829)
+[エンドユーザ側ワイヤーフレーム](https://docs.google.com/presentation/d/1pAtYvk6KzAe4NoHFcAiSai5lM85SpeJ-9z0GzGGljbs/edit?usp=sharing)
+[管理者側ワイヤーフレーム](https://docs.google.com/presentation/d/1Vbb2hV1bOg3AX3qrw2Rp-4dEoL3anp18Eu3Cv5xCDIY/edit?usp=sharing)
+
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
