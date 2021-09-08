@@ -30,6 +30,7 @@
 ## 設計書
 - [ER図](https://drive.google.com/file/d/193Q385tD8bDUOca7sad5_mnWdITxh8Cu/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1f2lNVyXqcQfgADfrtDCo6fuE-Itf1Kc_OgUSwtZbE10/edit#gid=561761829)
+- [詳細設計書](https://docs.google.com/spreadsheets/d/1_KOqj7REVZyLgscF0rdS2w0h6uQ2UC0G9d9muUHLBJY/edit?usp=sharing)
 
 
 
