@@ -1,0 +1,8 @@
+<h1>記念日詳細</h1>
+  <div class="title"><%= @post.title %></div>
+  <div class="body"><%= @post.body %></div>
+  <div class="date"><%= l @post.date %></div>
+
+  <%= link_to "編集", edit_post_path %>
+  <%= link_to "削除", post_path(@post), method: :delete %>
+  <%= link_to "戻る", posts_path %>

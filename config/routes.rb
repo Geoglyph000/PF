@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   end
 
   #エンドユーザ
-  resources :users, only: [:show, :edit, :update]
-  resources :posts
+  scope module: :public do
+    resources :users, only: [:show, :edit, :update]
+    resources :posts
+  end
 
 end
