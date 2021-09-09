@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
   def create
     post = Post.new(post_params)
     post.save
-    redirect_to posts_path
+    redirect_to post_path(post.id)
   end
 
   def new
@@ -29,6 +29,9 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 
   private
