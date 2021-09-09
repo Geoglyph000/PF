@@ -1,0 +1,15 @@
+<h1>記念日を登録</h1>
+<%= form_with model:@post, local:true do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>説明</h4>
+  <%= f.text_area :body %>
+
+   <h4>日付</h4>
+  <%= f.date_field :date %>
+
+  <%= f.submit '作成' %>
+
+<% end %>
