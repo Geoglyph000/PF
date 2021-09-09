@@ -1,0 +1,2 @@
+class GenreRelationsController < ApplicationController
+end
