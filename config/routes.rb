@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users, only: [:show, :edit, :update]
     resources :posts
+    get 'posts/date/:date' => 'posts#date_index'
   end
 
 end

@@ -1,7 +1,12 @@
 class Public::PostsController < ApplicationController
 
-  def index
+  def index #全投稿の一覧
     @posts = Post.all
+  end
+
+  def date_index #特定日の全投稿一覧
+    @posts = Post.where(date: params[:date])
+    @date = params[:date]
   end
 
   def create
@@ -26,7 +31,7 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    post = Post.new(post_params)
+    post = Post.find(params[:id])
     post.update(post_params)
     redirect_to post_path(post)
   end

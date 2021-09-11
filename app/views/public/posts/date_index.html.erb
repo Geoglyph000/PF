@@ -1,0 +1,8 @@
+<h1><%= @date %>の記念日一覧</h1>
+ <% @posts.each do |post| %>
+   <%= link_to post_path(post.id) do %>
+     <div class="title"><%= post.title %></div>
+     <div class="body"><%= post.body %></div>
+     <div class="date"><%= l post.date %></div>
+    <% end %>
+ <% end %>
