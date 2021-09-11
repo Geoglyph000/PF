@@ -17,6 +17,9 @@
    <h4>日付</h4>
   <%= f.date_field :date %>
 
+  <%# ユーザIDの紐付け %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
   <%= f.submit '作成' %>
 <% end %>
 

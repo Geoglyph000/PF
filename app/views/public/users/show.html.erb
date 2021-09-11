@@ -1,0 +1,18 @@
+<h1>ユーザ詳細</h1>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100' %>
+  <%= @user.user_name %>
+  <%= @user.introduction%>
+  <%= @user.email%>
+
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+
+<h3>記念日</h3>
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post.id) do %>
+     <div class="title"><%= post.title %></div>
+     <div class="body"><%= post.body %></div>
+     <div class="date"><%= l post.date %></div>
+    <% end %>
+  <% end %>
