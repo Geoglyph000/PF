@@ -6,6 +6,7 @@ class Public::PostsController < ApplicationController
 
   def date_index #特定日の全投稿一覧
     @posts = Post.where(date: params[:date])
+    @date = params[:date]
   end
 
   def create
