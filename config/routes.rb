@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   #エンドユーザ
   scope module: :public do
     resources :users, only: [:show, :edit, :update]
-    resources :posts
+    resources :posts do
+      resource :favorites, only: [:create, :destroy]
+    end
     get 'posts/date/:date' => 'posts#date_index'
   end
 
