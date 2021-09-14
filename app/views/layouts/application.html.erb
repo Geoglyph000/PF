@@ -10,19 +10,39 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href = "/"><span>Shareversary</span></a>
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-control="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-    <%= yield %>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item"><%= link_to "記念日をつくる", new_post_path, class: 'fas fa-home nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class: 'fas fa-home nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-home nav-link text-light' %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'fas fa-home nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'fas fa-home nav-link text-light' %></li>
+              <% end %>
+            </ul>
+          </div>
+
+        </div>
+        <% if user_signed_in? %>
+          <%= link_to user_path(current_user) do %>
+            <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "no_image.png", size: '40x40', class:"m-1 rounded-circle bg-white"; %>
+          <% end %>
+        <% end %>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
   </body>
 </html>
