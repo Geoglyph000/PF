@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :posts do
       resource :favorites, only: [:create, :destroy]
     end
+    get 'users/:id/favorites' => 'favorites#show', as: 'favorite'
     get 'posts/date/:date' => 'posts#date_index'
   end
 

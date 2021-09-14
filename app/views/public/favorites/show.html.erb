@@ -1,0 +1,9 @@
+<h1>お気に入りした投稿</h1>
+
+<% @favorites.each do |post| %>
+    <%= link_to post_path(post.id) do %>
+     <div class="title"><%= post.title %></div>
+     <div class="body"><%= post.body %></div>
+     <div class="date"><%= l post.date %></div>
+    <% end %>
+  <% end %>

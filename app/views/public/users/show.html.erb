@@ -8,6 +8,8 @@
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 
+  <%= link_to "いいねした記念日", favorite_path(@user) %>
+
 <h3>記念日</h3>
   <% @posts.each do |post| %>
     <%= link_to post_path(post.id) do %>
