@@ -9,5 +9,11 @@
     <h4>日付</h4>
     <%= f.date_field :date %>
 
-    <%= f.submit '作成' %>
+    <h4>公開設定</h4>
+    <%= f.radio_button :is_private, false %>
+    <%= f.label :is_private, "公開" %>
+    <%= f.radio_button :is_private, true  %>
+    <%= f.label :is_private, "非公開" %>
+
+    <%= f.submit '更新' %>
   <% end %>
