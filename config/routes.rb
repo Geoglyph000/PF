@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   #エンドユーザ
   scope module: :public do
     resources :users, only: [:show, :edit, :update]
+    put "/users/:id/deactivate" => "users#deactivate", as: 'users_deactivate'
     resources :posts do
       resource :favorites, only: [:create, :destroy]
     end
