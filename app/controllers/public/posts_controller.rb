@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
 
   def index #全投稿の一覧
-    @posts = Post.all
+    @posts = Post.where("(is_private = ?) OR (user_id == ?)", false, current_user) #「公開」設定の投稿or自身の投稿を取得
   end
 
   def date_index #特定日の全投稿一覧
@@ -28,6 +28,14 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+
+    if @post.is_private == true && @post.user != current_user
+      respond_to do |format|
+        format.html { redirect_to posts_path, notice: 'この記念日は非公開です' }
+      end
+    end
+
   end
 
   def update
@@ -44,7 +52,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :date, :user_id)
+    params.require(:post).permit(:title, :body, :date, :user_id, :is_private)
   end
 
 end

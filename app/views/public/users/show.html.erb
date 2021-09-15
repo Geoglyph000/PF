@@ -17,4 +17,12 @@
      <div class="body"><%= post.body %></div>
      <div class="date"><%= l post.date %></div>
     <% end %>
+
+    <% if @user.id == current_user.id %>
+        <% if post.is_private == false %>
+          <div class="text-success">公開</div>
+        <% else %>
+          <div class="text-secondary">非公開</div>
+        <% end %>
+    <% end %>
   <% end %>

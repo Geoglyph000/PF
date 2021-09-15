@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_075744) do
+ActiveRecord::Schema.define(version: 2021_09_14_031852) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_075744) do
     t.text "body"
     t.integer "user_id"
     t.datetime "date"
-    t.boolean "is_private"
+    t.boolean "is_private", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

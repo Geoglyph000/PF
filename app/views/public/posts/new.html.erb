@@ -17,6 +17,12 @@
    <h4>日付</h4>
   <%= f.date_field :date %>
 
+  <h4>記念日の公開設定</h4>
+  <%= f.radio_button :is_deleted, false, checked: true %>
+  <%= f.label :is_private, "公開" %>
+  <%= f.radio_button :is_deleted, true  %>
+  <%= f.label :is_private, "非公開" %>
+
   <%# 投稿にユーザIDを付与 %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
