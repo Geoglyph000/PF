@@ -5,8 +5,8 @@ class Public::PostsController < ApplicationController
   end
 
   def date_index #特定日の全投稿一覧
-    @posts = Post.where(date: params[:date])
     @date = params[:date]
+    @posts = Post.where(date: @date).where("(is_private = ?) OR (user_id == ?)", false, current_user)
   end
 
   def create
@@ -28,11 +28,9 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
-
     if @post.is_private == true && @post.user != current_user
       respond_to do |format|
-        format.html { redirect_to posts_path, notice: 'この記念日は非公開です' }
+        format.html { redirect_to root_path, notice: 'この記念日は非公開です' }
       end
     end
 
