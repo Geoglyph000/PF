@@ -1,0 +1,24 @@
+<table class="table table-hover table-inverse">
+   <thead>
+    <tr>
+     <th>作成者</th>
+     <th>記念日</th>
+     <th>説明</th>
+     <th>日付</th>
+     </tr>
+    </thead>
+
+    <tbody>
+     <% posts.each do |post| %>
+      <tr onclick='window.location="<%= '/posts/' + post.id.to_s %>"' role="link">
+        <td><%= attachment_image_tag post.user, :profile_image, :fill, 30,30, fallback: "no_image.png", size: '30x30', class: "rounded-circle" %></td>
+        <td class="title"><%= post.title %></td>
+        <td class="body"><%= post.body %></td>
+        <td class="date"><%= l post.date %></td>
+      </tr>
+     <% end %>
+   </tbody>
+  </table>
+
+  <%# 貼付用 %>
+  <%# render 'public/posts/table', posts: @posts %>

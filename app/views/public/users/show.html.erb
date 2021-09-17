@@ -32,7 +32,7 @@
           </thead>
           <tbody>
             <% @posts.each do |post| %>
-            <tr>
+            <tr onclick='window.location="<%= '/posts/' + post.id.to_s %>"' role="link">
               <%= link_to post_path(post.id) do %>
                <td class="title"><%= post.title %></td>
                <td class="body"><%= post.body %></td>
