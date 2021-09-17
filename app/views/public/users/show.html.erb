@@ -1,9 +1,9 @@
-  <div class="container m-2 mx-auto">
+<div class="container m-2 mx-auto">
   <h2>ユーザ詳細</h2>
     <div class="row">
 
      <div class="col-md-3">
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100' %>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded" %>
        <table class="table">
         <tbody>
           <tr><th><%= @user.user_name %></th></tr>
