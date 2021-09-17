@@ -1,28 +1,56 @@
-<h1>ユーザ詳細</h1>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100' %>
-  <%= @user.user_name %>
-  <%= @user.introduction%>
-  <%= @user.email%>
+<div class="container m-2 mx-auto">
+  <h2>ユーザ詳細</h2>
+    <div class="row">
 
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+     <div class="col-md-3">
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded" %>
+       <table class="table">
+        <tbody>
+          <tr><th><%= @user.user_name %></th></tr>
+          <tr><th><%= @user.introduction%></th></tr>
+          <% if @user.id == current_user.id %>
+            <tr><th><%= @user.email%></th></tr>
+            <tr><th><%= link_to "プロフィール編集", edit_user_path(@user) %></th></tr>
+          <% end %>
+          <tr><th><%= link_to "いいねした記念日", favorite_path(@user) %></th></tr>
+        </tbody>
+       </table>
+     </div>
 
-  <%= link_to "いいねした記念日", favorite_path(@user) %>
+     <div class="col-md-9">
+       <h3>記念日</h3>
+        <table class="table table-hover table-inverse">
+          <thead class="text-center">
+            <tr>
+              <th>記念日</th>
+              <th>説明</th>
+              <th>日付</th>
+              <% if @user.id == current_user.id %>
+                <th>公開設定</th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+            <tr>
+              <%= link_to post_path(post.id) do %>
+               <td class="title"><%= post.title %></td>
+               <td class="body"><%= post.body %></td>
+               <td class="date"><%= l post.date %></td>
+              <% end %>
 
-<h3>記念日</h3>
-  <% @posts.each do |post| %>
-    <%= link_to post_path(post.id) do %>
-     <div class="title"><%= post.title %></div>
-     <div class="body"><%= post.body %></div>
-     <div class="date"><%= l post.date %></div>
-    <% end %>
+              <% if @user.id == current_user.id %>
+                  <% if post.is_private == false %>
+                    <td class="text-success">公開</td>
+                  <% else %>
+                    <td class="text-secondary">非公開</td>
+                  <% end %>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+     </div>
 
-    <% if @user.id == current_user.id %>
-        <% if post.is_private == false %>
-          <div class="text-success">公開</div>
-        <% else %>
-          <div class="text-secondary">非公開</div>
-        <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>

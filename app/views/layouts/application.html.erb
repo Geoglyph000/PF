@@ -11,10 +11,10 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#8fccba">
         <a class="navbar-brand" href = "/"><span>Shareversary</span></a>
         <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-control="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-control="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -30,8 +30,9 @@
               <% end %>
             </ul>
           </div>
-
         </div>
+
+        <%# プロフィールアイコンの表示 %>
         <% if user_signed_in? %>
           <%= link_to user_path(current_user) do %>
             <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "no_image.png", size: '40x40', class:"m-1 rounded-circle bg-white"; %>
