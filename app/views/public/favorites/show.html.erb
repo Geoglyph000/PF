@@ -1,27 +1,6 @@
 <div class="container m-2 mx-auto">
  <div class="row">
-  <h2>お気に入りした投稿</h2>
-  <table class="table table-hover table-inverse">
-   <thead>
-    <tr>
-     <th>記念日</th>
-     <th>説明</th>
-     <th>日付</th>
-     </tr>
-    </thead>
-
-    <tbody>
-     <% @favorites.each do |post| %>
-      <tr>
-       <%= link_to post_path(post.id) do %>
-        <td class="title"><%= post.title %></td>
-        <td class="body"><%= post.body %></td>
-        <td class="date"><%= l post.date %></td>
-       <% end %>
-      </tr>
-     <% end %>
-   </tbody>
-  </table>
-
+  <h2><%= @user.user_name %>さんがいいねした記念日</h2>
+  <%= render 'public/posts/table', posts: @favorites %>
  </div>
 </div>
