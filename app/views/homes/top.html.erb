@@ -1,5 +1,11 @@
-<h1>Hello World</h1>
-<%= flash[:notice] %>
-<%= month_calendar do |date| %>
-  <%= date %>
-<% end %>
+<div class="container m-2 mx-auto">
+  <h1>Hello World</h1>
+    <%= flash[:notice] %>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= month_calendar do |date| %>
+        <%= date %>
+      <% end %>
+    </div>
+  </div>
+</div>
