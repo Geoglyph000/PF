@@ -15,6 +15,7 @@
         <td class="title"><%= post.title %></td>
         <td class="body"><%= post.body %></td>
         <td class="date"><%= l post.date %></td>
+        <td><%= render 'public/favorites/favorite-btn', post: post %><%= post.favorites.count %></td>
       </tr>
      <% end %>
    </tbody>
