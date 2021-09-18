@@ -1,0 +1,12 @@
+<% if post.favorited_by?(current_user) %>
+  <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+    <i class="fas fa-star fav-btn"></i>
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+    <i class="far fa-star unfav-btn"></i>
+  <% end %>
+<% end %>
+
+<%# 貼付用 %>
+<%# render 'public/favorites/favorite-btn', post: @post %>
