@@ -25,6 +25,7 @@
               <th>記念日</th>
               <th>説明</th>
               <th>日付</th>
+              <th>いいね数</th>
               <% if @user.id == current_user.id %>
                 <th>公開設定</th>
               <% end %>
@@ -37,6 +38,15 @@
                <td class="title"><%= post.title %></td>
                <td class="body"><%= post.body %></td>
                <td class="date"><%= l post.date %></td>
+               <td class="favorite">
+                  <%# trタグのクリック判定と被るため一覧からはいいねできないように %>
+                  <% if post.favorited_by?(current_user) %>
+                    <i class="fas fa-star fav-btn"></i>
+                  <% else %>
+                    <i class="far fa-star unfav-btn"></i>
+                  <% end %>
+                  <%= post.favorites.count %>
+                </td>
               <% end %>
 
               <% if @user.id == current_user.id %>
