@@ -1,0 +1,62 @@
+<h2 class="offset-1">ユーザ詳細</h2>
+<div class="container m-2 mx-auto">
+    <div class="row">
+
+     <div class="col-md-3">
+      <div class="m-2 text-center"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border" %></div>
+       <table class="table">
+        <tbody>
+          <tr>
+            <th><%= @user.user_name %></th>
+            <% if @user.is_active == true %>
+              <div class="text-success">有効</div>
+            <% else %>
+              <div class="text-secondary">退会済み</div>
+            <% end %>
+          </tr>
+          <tr><th><%= @user.introduction%></th></tr>
+          <tr><th><%= @user.email%></th></tr>
+          <tr><th><%= link_to "ユーザーの編集", edit_admin_user_path(@user) %></th></tr>
+          <tr><th><%= link_to "いいねした記念日", favorite_path(@user) %></th></tr>
+        </tbody>
+       </table>
+     </div>
+
+     <div class="col-md-9">
+       <h3>記念日</h3>
+        <table class="table table-hover table-inverse">
+          <thead class="text-center">
+            <tr>
+              <th>記念日</th>
+              <th>説明</th>
+              <th>日付</th>
+              <th>いいね数</th>
+              <th>公開設定</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr onclick='window.location="<%= '/admin/posts/' + post.id.to_s %>"' role="link">
+                <%= link_to post_path(post.id) do %>
+                 <td class="title"><%= post.title %></td>
+                 <td class="body"><%= post.body %></td>
+                 <td class="date"><%= l post.date %></td>
+                 <td class="favorite">
+                  <%# 管理者のためいいねは表示のみ %>
+                  <i class="fas fa-star fav-btn"></i><%= post.favorites.count %>
+                 </td>
+                <% end %>
+
+                <% if post.is_private == false %>
+                  <td class="text-success">公開</td>
+                <% else %>
+                  <td class="text-secondary">非公開</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+     </div>
+
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>ユーザー一覧</h2>
+  <div class="row">
+    <table class="table table-hover table-inverse">
+     <thead>
+      <tr>
+       <th>会員ID</th>
+       <th>ユーザー名</th>
+       <th>ステータス</th>
+       </tr>
+      </thead>
+
+      <tbody>
+       <% @users.each do |user| %>
+        <tr onclick='window.location="<%= 'users/' + user.id.to_s %>"' role="link">
+          <td class="userID"><%= user.id %></td>
+          <td class="username"><%= attachment_image_tag user, :profile_image, :fill, 30,30, fallback: "no_image.png", size: '30x30', class: "rounded-circle border" %> <%= user.user_name %></td>
+            <% if user.is_active == true %>
+              <td class="text-success">有効</td>
+            <% else %>
+              <td class="text-secondary">退会済</td>
+            <% end %>
+        </tr>
+       <% end %>
+     </tbody>
+    </table>
+  </div>
+</div>
