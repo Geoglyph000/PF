@@ -1,4 +1,5 @@
 class Admin::PostsController < ApplicationController
+  before_action :authenticate_admin! #管理者ログインしていないアクセスを弾く
 
   def index #全投稿の一覧
     @posts = Post.all

@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin! #管理者ログインしていないアクセスを弾く
 
   def index
     @users = User.all
@@ -22,7 +23,13 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def deactivate #退会処理
+  def destroy #物理削除
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to root_path
+  end
+
+  def deactivate #論理削除
     @user = User.find(params[:id])
     @posts = @user.posts.all
     @user.update(is_active: false) #退会フラグを立てる

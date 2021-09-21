@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
+
+  devise_for :admins, module: "admin/devise"
+
+  devise_for :users, module: "public/devise"
 
   root to: 'homes#top'
 
+  #管理者
   namespace :admin do
     resources :admins, only: [:show, :edit, :update]
-    resources :users, except: [:destroy]
+    resources :users
     resources :posts
     resources :genres
   end
@@ -18,8 +21,8 @@ Rails.application.routes.draw do
     resources :posts do
       resource :favorites, only: [:create, :destroy]
     end
-    get 'users/:id/favorites' => 'favorites#show', as: 'favorite'
-    get 'posts/date/:date' => 'posts#date_index', as: 'date_index'
+    get 'users/:id/favorites' => 'favorites#show', as: 'favorite' #いいね一覧
+    get 'posts/date/:date' => 'posts#date_index', as: 'date_index' #日別投稿一覧
   end
 
 end

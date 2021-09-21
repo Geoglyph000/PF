@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user! #未ログインユーザのアクセスを弾く
 
   def create
     post = Post.find(params[:post_id])

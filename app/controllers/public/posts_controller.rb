@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user! #未ログインユーザのアクセスを弾く
 
   def index #全投稿の一覧
     @posts = Post.where("(is_private = ?) OR (user_id == ?)", false, current_user) #「公開」設定の投稿or自身の投稿を取得

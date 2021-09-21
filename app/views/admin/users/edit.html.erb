@@ -50,6 +50,13 @@
           <%= link_to "編集せず戻る", admin_user_path(@user.id)%>
         </div>
 
+        <%# 物理削除ボタン　念の為再度管理者ログイン認証 %>
+        <div class="text-right">
+          <% if admin_signed_in? %>
+            <%= link_to "ユーザーを削除する", admin_user_path(@user), method: :delete, "data-confirm" => "削除後はアカウントを復元できません。本当に削除しますか？", class: "btn btn-outline-danger" %>
+          <% end %>
+        </div>
+
 
 
     </div>
