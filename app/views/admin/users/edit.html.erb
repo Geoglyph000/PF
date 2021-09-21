@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto">
+
+      <h2>ユーザー編集</h2>
+        <%= form_with model:@user, url: admin_user_path(@user), local:true do |f| %>
+          <div class="form-group m-2">
+            <div class="row">
+              <div class="col-sm-4"><label for="inputName">ユーザー名</label></div>
+              <%= f.text_field :user_name, autofocus: true, id:"inputName", placeholder: "ユーザ名"%>
+            </div>
+          </div>
+
+          <div class="form-group m-2">
+            <div class="row">
+              <div class="col-sm-4"><label for ="inputIntroduction">自己紹介</label></div>
+              <%= f.text_area :introduction, id: "inputintroduction", placeholder: "自己紹介" %>
+            </div>
+          </div>
+
+          <div class="form-group m-2">
+            <div class="row">
+              <div class="col-sm-4"><label for="inputImage">プロフィール画像</label></div>
+              <div class="col-sm-8">
+                <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.png", size: '100x100', class: "rounded" %>
+                <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "my-2" %>
+              </div>
+            </div>
+          </div>
+
+          <%# 論理退会ボタン %>
+        <div class="form-group m-2">
+          <div class="row">
+            <div class="col-sm-4">会員ステータス</div>
+            <div class="col-sm-8">
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, "有効" %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label :is_active, "退会" %>
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group m-4 text-center">
+            <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
+          </div>
+        <% end %>
+
+        <div class="text-center">
+          <%= link_to "編集せず戻る", admin_user_path(@user.id)%>
+        </div>
+
+        <%# 物理削除ボタン　念の為再度管理者ログイン認証 %>
+        <div class="text-right">
+          <% if admin_signed_in? %>
+            <%= link_to "ユーザーを削除する", admin_user_path(@user), method: :delete, "data-confirm" => "削除後はアカウントを復元できません。本当に削除しますか？", class: "btn btn-outline-danger" %>
+          <% end %>
+        </div>
+
+
+
+    </div>
+  </div>
+</div>

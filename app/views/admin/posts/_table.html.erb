@@ -1,0 +1,32 @@
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+     <th>作成者</th>
+     <th>記念日</th>
+     <th>説明</th>
+     <th>日付</th>
+     <th></th>
+     <th>公開設定</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr onclick='window.location="<%= '/admin/posts/' + post.id.to_s %>"' role="link">
+        <td><%= attachment_image_tag post.user, :profile_image, :fill, 30,30, fallback: "no_image.png", size: '30x30', class: "rounded-circle" %></td>
+        <td class="title"><%= post.title %></td>
+        <td class="body"><%= post.body %></td>
+        <td class="date"><%= l post.date %></td>
+        <td><i class="fas fa-star fav-btn"></i><%= post.favorites.count %></td>
+        <% if post.is_private == false %>
+          <td class="text-success">公開</td>
+        <% else %>
+          <td class="text-secondary">非公開</td>
+        <% end %>
+        </tr>
+   <% end %>
+  </tbody>
+</table>
+
+<%# 貼付用 %>
+<%# render 'admin/posts/table', posts: @posts %>

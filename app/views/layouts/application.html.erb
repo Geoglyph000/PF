@@ -14,8 +14,14 @@
 
   <body>
     <header>
+    <% if admin_signed_in? %>
+      <%# 管理者ログイン時にヘッダー色の変更 %>
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#cc8fa1">
+        <a class="navbar-brand" href = "/"><span>Shareversary 管理者</span></a>
+    <% else %>
       <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#8fccba">
         <a class="navbar-brand" href = "/"><span>Shareversary</span></a>
+    <% end %>
         <div class="container">
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-control="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +29,13 @@
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
+
+              <% if admin_signed_in? %>
+                <li class="nav-item"><%= link_to " 記念日をつくる", new_post_path, class: 'fas fa-calendar-plus nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to " 記念日一覧", admin_posts_path, class: 'fas fa-calendar-alt nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to " ユーザー一覧", admin_users_path, class: 'fas fa-users nav-link text-light' %></li>
+                <li class="nav-item"><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+              <% elsif user_signed_in? %>
                 <li class="nav-item"><%= link_to " 記念日をつくる", new_post_path, class: 'fas fa-calendar-plus nav-link text-light' %></li>
                 <li class="nav-item"><%= link_to " マイページ", user_path(current_user), class: 'fas fa-user nav-link text-light' %></li>
                 <li class="nav-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
