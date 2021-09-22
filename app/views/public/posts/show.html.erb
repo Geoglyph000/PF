@@ -51,6 +51,11 @@
         <%# いいね機能 %>
         <%= render 'public/favorites/favorite-btn', post: @post %><%= @post.favorites.count %>
 
+        <%# ジャンル機能 %>
+        <% @post.genres.each do |genre| %>
+          <i class="fas fa-tag"><%= genre.name %></i>
+        <% end %>
+
         <% if @post.user == current_user %>
           <%= link_to "編集", edit_post_path %>
           <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？"  %>

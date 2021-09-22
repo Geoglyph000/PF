@@ -43,6 +43,17 @@
           </div>
         </div>
 
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4"><label for ="genre">カテゴリ</label></div>
+            <div class="checkbox">
+              <%= collection_check_boxes(:post, :genre_ids, Genre.all, :id, :name) do |b| %>
+                <%= b.label {b.check_box + " " + b.text} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
         <%# 投稿にユーザIDを付与 %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
 
