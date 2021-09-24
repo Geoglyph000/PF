@@ -32,6 +32,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @genres = Genre.all
     if @post.is_private == true && @post.user != current_user
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'この記念日は非公開です' }

@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   #エンドユーザ
   scope module: :public do
     resources :users, only: [:show, :edit, :update]
-    put "/users/:id/deactivate" => "users#deactivate", as: 'users_deactivate'
+    put "/users/:id/deactivate" => "users#deactivate", as: 'users_deactivate' #論理退会処理
     resources :posts do
       resource :favorites, only: [:create, :destroy]
     end
     get 'users/:id/favorites' => 'favorites#show', as: 'favorite' #いいね一覧
     get 'posts/date/:date' => 'posts#date_index', as: 'date_index' #日別投稿一覧
   end
+
+  get 'posts/genre/:genre_id' => 'genre_relations#index', as: 'genre_index' #日別投稿一覧
 
 end
