@@ -23,6 +23,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @genres = Genre.all
   end
 
   def edit
@@ -31,6 +32,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @genres = Genre.all
     if @post.is_private == true && @post.user != current_user
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'この記念日は非公開です' }
@@ -53,7 +55,7 @@ class Public::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :date, :user_id, :is_private)
+    params.require(:post).permit(:title, :body, :date, :user_id, :is_private, genre_ids: [])
   end
 
 end

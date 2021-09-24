@@ -1,0 +1,10 @@
+<div class="container m-2 mx-auto">
+ <div class="row">
+  <h2>「<%= @genre.name %>」タグの記念日一覧</h2>
+    <% if @posts.exists? %>
+      <%= render 'public/posts/table', posts: @posts %>
+    <% else %>
+      <span>該当する投稿はありません</span>
+    <% end %>
+ </div>
+</div>

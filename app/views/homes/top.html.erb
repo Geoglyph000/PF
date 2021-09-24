@@ -2,7 +2,10 @@
   <h1>Hello World</h1>
     <%= flash[:notice] %>
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
+      <%= render 'homes/genre', genres: @genres %>
+    </div>
+    <div class="col-sm-9">
       <%= month_calendar do |date| %>
         <%= date %>
       <% end %>

@@ -16,6 +16,8 @@
           <tr><th><%= link_to "いいねした記念日", favorite_path(@post.user) %></th></tr>
         </tbody>
        </table>
+
+      <%= render 'homes/genre', genres: @genres %>
      </div>
 
      <div class="col-md-9">
@@ -50,6 +52,15 @@
 
         <%# いいね機能 %>
         <%= render 'public/favorites/favorite-btn', post: @post %><%= @post.favorites.count %>
+
+        <%# ジャンル機能 %>
+        <% @post.genres.each do |genre| %>
+          <span class="border rounded p-1">
+            <%= link_to genre_index_path(genre.id) do %>
+              <i class="fas fa-tag text-black-50"><%= genre.name %></i>
+            <% end %>
+          </span>
+        <% end %>
 
         <% if @post.user == current_user %>
           <%= link_to "編集", edit_post_path %>

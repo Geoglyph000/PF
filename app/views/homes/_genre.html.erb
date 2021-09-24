@@ -1,0 +1,20 @@
+<table class="table table-bordered genre-table">
+  <thead>
+    <tr>
+      <th>ジャンルで検索</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% genres.each do |genre| %>
+      <tr>
+        <td>
+          <%= link_to genre.name, genre_index_path(genre.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%#貼り付け用%>
+<%# render 'homes/genre', genres: @genres %>
