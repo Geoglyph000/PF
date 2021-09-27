@@ -4,9 +4,9 @@ class HomesController < ApplicationController
     @genres =Genre.all
   end
 
-  def top
+  def landing #ランディングページ
     if user_signed_in?
-      redirect_to root_path
+      redirect_to home_path #ログイン時はルートパスへリダイレクト
     end
   end
 

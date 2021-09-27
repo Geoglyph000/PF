@@ -13,9 +13,7 @@
   </head>
 
   <body>
-    <% unless current_page?(top_path) %><%# ランディングページにヘッダーを非表示 %>
-      <%= render 'layouts/header' %>
-    <% end %>
+    <%= render 'layouts/header' %>
 
     <main>
       <%= yield %>
