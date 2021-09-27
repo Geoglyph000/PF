@@ -1,11 +1,20 @@
 <div class="container m-2 mx-auto">
- <div class="row">
-  <h2><%= @date %>の記念日一覧</h2>
-   <div class="m-2 ml-auto">
-    <%= link_to "< 前の日", date_index_path(@yesterday) %> |
-    <%= link_to "次の日 >", date_index_path(@tomorrow) %>
-   </div>
+  <div class="row">
+      <h2><%= @date %>の記念日一覧</h2>
+      <div class="m-2 ml-auto">
+        <%= link_to "< 前の日", date_index_path(@yesterday) %> |
+        <%= link_to "次の日 >", date_index_path(@tomorrow) %>
+     </div>
+  </div>
 
-  <%= render 'public/posts/table', posts: @posts %>
- </div>
+  <div clas="row">
+
+      <% if @posts.empty? %>
+        <span>記念日はまだありません。
+        記念日を<%= link_to "投稿", new_post_path %>してみませんか？</span>
+      <% else %>
+        <%= render 'public/posts/table', posts: @posts %>
+      <% end %>
+
+  </div>
 </div>
