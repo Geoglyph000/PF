@@ -6,7 +6,7 @@ ja:
 
   date:
     month_names:
-    -
+    - #なぜか月が一個ずれているので帳尻合わせ
     - January
     - February
     - March

@@ -5,10 +5,12 @@
       <h2>記念日をつくる</h2>
 
       <% if @post.errors.any? %>
-        <%= @post.errors.count %>件のエラーが発生しました</br>
-        <% @post.errors.full_messages.each do |message| %>
-          <%= message %></br>
-        <% end %>
+        <div id="error_explanation" class="m-2 p-3 border border-danger">
+            <%= @post.errors.count %>件のエラーが発生しました</br>
+            <% @post.errors.full_messages.each do |message| %>
+              <%= message %></br>
+            <% end %>
+        </div>
       <% end %>
 
       <%= form_with model:@post, local:true do |f| %>
