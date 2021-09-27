@@ -4,18 +4,9 @@
 
      <div class="col-md-3">
       <h4>記念日を作った人</h4>
-      <div class="m-2 text-center"><%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border" %></div>
-       <table class="table">
-        <tbody>
-          <tr><th><%= @post.user.user_name %></th></tr>
-          <tr><th><%= @post.user.introduction%></th></tr>
-          <% if @post.user == current_user %>
-            <tr><th><%= @post.user.email%></th></tr>
-            <tr><th><%= link_to "プロフィール編集", edit_user_path(@post.user) %></th></tr>
-          <% end %>
-          <tr><th><%= link_to "いいねした記念日", favorite_path(@post.user) %></th></tr>
-        </tbody>
-       </table>
+      <div class="border rounded mb-2">
+        <%= render 'public/users/info', user: @post.user %>
+      </div>
 
       <%= render 'homes/genre', genres: @genres %>
      </div>
