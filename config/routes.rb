@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :admins, module: "admin/devise"
-
   devise_for :users, module: "public/devise"
 
-  root to: 'homes#top'
+
+  root to: 'homes#home'
+
+  get 'top' => 'homes#landing'
 
   #管理者
   namespace :admin do
