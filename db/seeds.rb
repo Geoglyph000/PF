@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.find_or_create_by(id: 1) do |admin|
-  admin.email: ENV['ADMIN_EMAIL'] ,
-  admin.password: ENV['ADMIN_PASSWORD'])
+  admin.email = ENV['ADMIN_EMAIL']
+  admin.password = ENV['ADMIN_PASSWORD']
 end
+
+User.create!(email: 'test@gmail.com' , password: 'testtest')
 
 Genre.create([
     { name: '初めての〇〇' },
