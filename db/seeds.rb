@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Admin.find_or_create_by(id: 1) do |admin|
+  admin.email = ENV['ADMIN_EMAIL']
+  admin.password = ENV['ADMIN_PASSWORD']
+end
+
+User.create!(email: 'test@gmail.com' , password: 'testtest')
+
+Genre.create([
+    { name: '初めての〇〇' },
+    { name: 'やらかし' },
+    { name: '〇〇回記念'},
+    ])

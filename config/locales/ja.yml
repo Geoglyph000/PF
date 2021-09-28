@@ -1,0 +1,29 @@
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      detail: "%Y/%m/%d %H:%M:%S"
+
+  date:
+    month_names:
+    - #なぜか月が一個ずれているので帳尻合わせ
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sut

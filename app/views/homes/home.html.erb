@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <h3>ホーム</h3>
+    <%= flash[:notice] %>
+  <div class="row mx-2" style="height: 100%;">
+    <div class="col-sm-3">
+      <%= render 'homes/genre', genres: @genres %>
+    </div>
+    <div class="col-sm-9">
+      <%= month_calendar do |date| %>
+        <%= date.day %>
+      <% end %>
+    </div>
+  </div>
+</div>

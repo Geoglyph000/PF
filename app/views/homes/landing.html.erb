@@ -1,0 +1,47 @@
+<div class="container-fluid" style="height: 100vh;">
+<%= flash[:notice] %>
+  <div class="row justify-content-center" style="height: 100%;">
+    <div class="col-sm-7">
+
+      <div class="mt-4 d-flex flex-column justify-content-center">
+        <h2>Shareversary</h2>
+        <p>「記念日」をシェアするSNS</p>
+      </div>
+
+      <div class="row">
+        <div class="col-7 d-flex flex-column align-items-center justify-content-center">
+            <h4>①記念日を投稿する</h4>
+            <p>あなたにとって、今日はどんな日ですか？</p>
+            <span>「初めてのちゃんこ鍋」</br>「初めて財布をなくした」</br>「100回目のプロポーズ」</span>
+            <p class="mt-3">なんでも構いません。あなたにとっての「記念日」を投稿してみましょう。</p>
+        </div>
+        <div class="col-5"><%= image_tag "undraw_Calendar_re_ki49.png", size: "404x314", class: "img-fluid m-2 mx-auto" %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-5"><%= image_tag "undraw_Social_networking_re_i1ex", size: "404x314", class: "img-fluid m-2 mx-auto" %></div>
+        <div class="col-7 d-flex flex-column align-items-center justify-content-center">
+          <h4>②他人の記念日を眺める</h4>
+          <p>他のユーザーが投稿した記念日も見てみましょう。</br>
+          うれしい記念日も、残念な記念日も、みんなで共有すれば</br>「なんでもない日」も、「意味のある日」。</br>
+          なんでもない一日を、ちょっと変えるきっかけに。</p>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-sm-4 border-left d-flex flex-column align-items-center justify-content-center" style="background-color:#f5f5f5">
+      <div class="m-3">
+        <h3>記念日で、ちょっと違った毎日を。</h3>
+      </div>
+      <%= link_to new_user_registration_path do %>
+          <div class="btn text-light m-4" style="background-color:#8fccba">新規登録</div>
+      <% end %>
+
+      <div>
+        アカウントをお持ちの場合は<%= link_to "ログイン", new_user_session_path %>
+      </div>
+    </div>
+  </div>
+</div>

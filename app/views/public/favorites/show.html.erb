@@ -1,0 +1,6 @@
+<div class="container m-2 mx-auto">
+ <div class="row">
+  <h2><%= @user.user_name %>さんがいいねした記念日</h2>
+  <%= render 'public/posts/table', posts: @favorites %>
+ </div>
+</div>

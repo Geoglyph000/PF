@@ -1,0 +1,55 @@
+<h2 class="offset-1">ユーザ詳細</h2>
+<div class="container m-2 mx-auto">
+    <div class="row">
+
+     <div class="col-md-3 border rounded">
+      <%= render 'public/users/info', user: @user %>
+     </div>
+
+     <div class="col-md-9">
+       <h3>記念日</h3>
+        <table class="table table-hover table-inverse">
+          <thead class="text-center">
+            <tr>
+              <th>記念日</th>
+              <th>説明</th>
+              <th>日付</th>
+              <th>いいね数</th>
+              <% if @user.id == current_user.id %>
+                <th>公開設定</th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+            <tr onclick='window.location="<%= '/posts/' + post.id.to_s %>"' role="link">
+              <%= link_to post_path(post.id) do %>
+               <td class="title"><%= post.title %></td>
+               <td class="body"><%= post.body %></td>
+               <td class="date"><%= l post.date %></td>
+               <td class="favorite">
+                  <%# trタグのクリック判定と被るため一覧からはいいねできないように %>
+                  <% if post.favorited_by?(current_user) %>
+                    <i class="fas fa-star fav-btn"></i>
+                  <% else %>
+                    <i class="far fa-star unfav-btn"></i>
+                  <% end %>
+                  <%= post.favorites.count %>
+                </td>
+              <% end %>
+
+              <% if @user.id == current_user.id %>
+                  <% if post.is_private == false %>
+                    <td class="text-success">公開</td>
+                  <% else %>
+                    <td class="text-secondary">非公開</td>
+                  <% end %>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+     </div>
+
+    </div>
+  </div>
