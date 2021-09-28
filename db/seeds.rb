@@ -11,7 +11,7 @@ Admin.find_or_create_by(id: 1) do |admin|
   admin.password = ENV['ADMIN_PASSWORD']
 end
 
-User.create!(email: 'test@gmail.com' , password: 'testtest')
+#User.create!(email: 'test@gmail.com' , password: 'testtest')
 
 Genre.create([
     { name: '初めての〇〇' },
