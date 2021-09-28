@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h4 class="red-border bg-light m-4">ジャンル一覧</h4>
+        <h4 class="red-border bg-light m-4">タグ一覧</h4>
     </div>
     <div class="row mt-4">
         <div class='col'>
@@ -8,8 +8,8 @@
             <table>
               <tbody>
                   <tr>
-                    <td class="text-dark" width="150">ジャンル名</td>
-                    <td width="200"><%= f.text_field :name, placeholder: "ジャンル名" %></td>
+                    <td class="text-dark" width="150">タグ名</td>
+                    <td width="200"><%= f.text_field :name, placeholder: "タグ名" %></td>
                     <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
                   </tr>
               </tbody>
@@ -23,7 +23,7 @@
             <table class="table table-hover table-inversey">
                 <thead class="bg-light">
                     <tr>
-                        <th class="text-dark">ジャンル</th>
+                        <th class="text-dark">タグ</th>
                         <td></td>
                         <td></td>
                     </tr>

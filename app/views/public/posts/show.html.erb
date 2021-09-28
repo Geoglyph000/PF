@@ -2,73 +2,65 @@
   <h2>記念日詳細</h2>
     <div class="row">
 
-     <div class="col-md-3">
-      <h4>記念日を作った人</h4>
-      <div class="m-2 text-center"><%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border" %></div>
-       <table class="table">
-        <tbody>
-          <tr><th><%= @post.user.user_name %></th></tr>
-          <tr><th><%= @post.user.introduction%></th></tr>
-          <% if @post.user == current_user %>
-            <tr><th><%= @post.user.email%></th></tr>
-            <tr><th><%= link_to "プロフィール編集", edit_user_path(@post.user) %></th></tr>
-          <% end %>
-          <tr><th><%= link_to "いいねした記念日", favorite_path(@post.user) %></th></tr>
-        </tbody>
-       </table>
+      <div class="col-md-3">
+        <h4>記念日を作った人</h4>
+        <div class="border rounded mb-2">
+          <%= render 'public/users/info', user: @post.user %>
+        </div>
+        <%= render 'homes/genre', genres: @genres %>
+       </div>
 
-      <%= render 'homes/genre', genres: @genres %>
-     </div>
-
-     <div class="col-md-9">
-       <h3>記念日</h3>
-        <table class="table table-hover table-inverse">
-          <thead class="text-center">
-            <tr>
-              <th>記念日</th>
-              <th>説明</th>
-              <th>日付</th>
-              <% if @post.user == current_user %>
-                <th>公開設定</th>
-              <% end %>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="title"><%= @post.title %></td>
-              <td class="body"><%= @post.body %></td>
-              <td class="date"><%= l @post.date %></td>
-
-              <% if @post.user == current_user %>
-                <% if @post.is_private == false %>
-                  <td class="text-success">公開</td>
-                <% else %>
-                  <td class="text-secondary">非公開</td>
+       <div class="col-md-9">
+         <h3>記念日</h3>
+          <table class="table table-hover table-inverse">
+            <thead class="text-center">
+              <tr>
+                <th>記念日</th>
+                <th>説明</th>
+                <th>日付</th>
+                <% if @post.user == current_user %>
+                  <th>公開設定</th>
                 <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="title"><%= @post.title %></td>
+                <td class="body"><%= @post.body %></td>
+                <td class="date"><%= l @post.date %></td>
+
+                <% if @post.user == current_user %>
+                  <% if @post.is_private == false %>
+                    <td class="text-success">公開</td>
+                  <% else %>
+                    <td class="text-secondary">非公開</td>
+                  <% end %>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+
+          <%# いいね機能 %>
+          <%= render 'public/favorites/favorite-btn', post: @post %><%= @post.favorites.count %>
+
+          <%# ジャンル機能 %>
+          <% @post.genres.each do |genre| %>
+            <span class="border rounded p-1">
+              <%= link_to genre_index_path(genre.id) do %>
+                <i class="fas fa-tag text-black-50"><%= genre.name %></i>
               <% end %>
-            </tr>
-          </tbody>
-        </table>
+            </span>
+          <% end %>
 
-        <%# いいね機能 %>
-        <%= render 'public/favorites/favorite-btn', post: @post %><%= @post.favorites.count %>
-
-        <%# ジャンル機能 %>
-        <% @post.genres.each do |genre| %>
-          <span class="border rounded p-1">
-            <%= link_to genre_index_path(genre.id) do %>
-              <i class="fas fa-tag text-black-50"><%= genre.name %></i>
+          <div class="mx-1 ml-auto">
+            <% if @post.user == current_user %>
+              <%= link_to "編集", edit_post_path %>
+              |
+              <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+              |
             <% end %>
-          </span>
-        <% end %>
-
-        <% if @post.user == current_user %>
-          <%= link_to "編集", edit_post_path %>
-          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？"  %>
-        <% end %>
-        <%= link_to "一覧に戻る", posts_path %>
-
-     </div>
-
+            <%= link_to "一覧に戻る", posts_path %>
+          </div>
+      </div>
     </div>
 </div>
