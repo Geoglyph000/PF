@@ -2,14 +2,14 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user! #未ログインユーザのアクセスを弾く
 
   def index #全投稿の一覧
-    @posts = Post.where("(is_private = ?) OR (user_id == ?)", false, current_user) #「公開」設定の投稿or自身の投稿を取得
+    @posts = Post.where("(is_private = ?) OR (user_id = ?)", false, current_user) #「公開」設定の投稿or自身の投稿を取得
   end
 
   def date_index #特定日の全投稿一覧
     @date = params[:date].gsub(/-/,'') #日時計算用にハイフンを除外
     @tomorrow = (@date.to_i + 1).to_s
     @yesterday = (@date.to_i - 1).to_s
-    @posts = Post.where(date: @date).where("(is_private = ?) OR (user_id == ?)", false, current_user) #日付→公開ポストの順で抽出
+    @posts = Post.where(date: @date).where("(is_private = ?) OR (user_id = ?)", false, current_user) #日付→公開ポストの順で抽出
   end
 
   def create
