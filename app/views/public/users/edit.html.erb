@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-10 col-md-8 col-lg-5 px-5 mx-auto">
 
       <h2>プロフィール編集</h2>
         <%= form_with model:@user, local:true do |f| %>
@@ -40,7 +40,7 @@
         <%# 退会ボタン、念の為再度ログイン認証 %>
         <div class="text-right">
           <% if user_signed_in? && @user.id == current_user.id %>
-            <%= link_to "退会する", users_deactivate_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+            <%= link_to "退会する", users_deactivate_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？\n（退会すると作った記念日は全て非公開になります。）", class: "btn btn-outline-danger" %>
           <% end %>
         </div>
 
