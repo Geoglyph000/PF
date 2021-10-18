@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.all
-    if @user.is_active == false
+    if !@user.is_active #フラグがfalseのとき
       respond_to do |format|
         format.html { redirect_to root_path, notice: '退会済みのユーザーです' }
       end
