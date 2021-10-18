@@ -1,14 +1,14 @@
 <header>
   <% if admin_signed_in? %>
     <%# 管理者ログイン時にヘッダー色の変更 %>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#cc8fa1">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#cc8fa1">
       <a class="navbar-brand" href = "/"><span>Shareversary 管理者</span></a>
   <% else %>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#8fccba">
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#8fccba">
       <a class="navbar-brand" href = "/"><span>Shareversary</span></a>
   <% end %>
 
-    <div class="container">
+    <div class="ml-auto">
       <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-control="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,11 +36,12 @@
       </div>
     </div>
 
-    <%# プロフィールアイコンの表示 %>
+     <%# プロフィールアイコンの表示 %>
     <% if user_signed_in? %>
       <%= link_to user_path(current_user) do %>
         <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "no_image.png", size: '40x40', class:"m-1 rounded-circle bg-white"; %>
       <% end %>
     <% end %>
+
   </nav>
 </header>

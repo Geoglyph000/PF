@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-8 col-lg-6 px-md-5 mx-auto">
 
-      <h2>記念日の編集</h2>
+      <h3>記念日の編集</h3>
 
       <% if @post.errors.any? %>
         <%= @post.errors.count %>件のエラーが発生しました</br>
@@ -48,7 +48,7 @@
             <div class="col-sm-4"><label for ="genre">カテゴリ</label></div>
             <div class="checkbox">
               <%= collection_check_boxes(:post, :genre_ids, Genre.all, :id, :name) do |b| %>
-                <%= b.label {b.check_box + " " + b.text} %>
+                <%= b.label {b.check_box + " " + b.text} %></br>
               <% end %>
             </div>
           </div>

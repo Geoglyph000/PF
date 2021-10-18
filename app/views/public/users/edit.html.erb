@@ -1,28 +1,28 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-6 px-2 mx-auto">
 
-      <h2>プロフィール編集</h2>
+      <h3>プロフィール編集</h3>
         <%= form_with model:@user, local:true do |f| %>
           <div class="form-group m-2">
-            <div class="row">
-              <div class="col-sm-4"><label for="inputName">ユーザー名</label></div>
+            <div class="row mx-2">
+              <div class="col-md-4"><label for="inputName">ユーザー名</label></div>
               <%= f.text_field :user_name, autofocus: true, id:"inputName", placeholder: "ユーザ名"%>
             </div>
           </div>
 
           <div class="form-group m-2">
-            <div class="row">
-              <div class="col-sm-4"><label for ="inputIntroduction">自己紹介</label></div>
+            <div class="row mx-2">
+              <div class="col-md-4"><label for ="inputIntroduction">自己紹介</label></div>
               <%= f.text_area :introduction, id: "inputintroduction", placeholder: "自己紹介" %>
             </div>
           </div>
 
           <div class="form-group m-2">
-            <div class="row">
-              <div class="col-sm-4"><label for="inputImage">プロフィール画像</label></div>
-              <div class="col-sm-8">
-                <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.png", size: '100x100', class: "rounded" %>
+            <div class="row mx-2">
+              <div class="col-md-4"><label for="inputImage">プロフィール画像</label></div>
+              <div class="col-8">
+                <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.png", size: '100x100', class: "rounded border" %>
                 <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "my-2" %>
               </div>
             </div>
@@ -40,7 +40,7 @@
         <%# 退会ボタン、念の為再度ログイン認証 %>
         <div class="text-right">
           <% if user_signed_in? && @user.id == current_user.id %>
-            <%= link_to "退会する", users_deactivate_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+            <%= link_to "退会する", users_deactivate_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？\n（退会すると作った記念日は全て非公開になります。）", class: "btn btn-outline-danger" %>
           <% end %>
         </div>
 
