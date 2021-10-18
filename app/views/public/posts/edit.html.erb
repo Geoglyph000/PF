@@ -48,7 +48,7 @@
             <div class="col-sm-4"><label for ="genre">カテゴリ</label></div>
             <div class="checkbox">
               <%= collection_check_boxes(:post, :genre_ids, Genre.all, :id, :name) do |b| %>
-                <%= b.label {b.check_box + " " + b.text} %>
+                <%= b.label {b.check_box + " " + b.text} %></br>
               <% end %>
             </div>
           </div>

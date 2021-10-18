@@ -1,10 +1,14 @@
 <div class="m-2 text-center">
-  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border" %>
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border", style: "background-color:#ffffff" %>
 </div>
 <table class="table">
   <tbody>
-    <tr><th><%= user.user_name %></th></tr>
-    <tr><th><%= user.introduction%></th></tr>
+    <tr>
+      <th>
+        <%= user.user_name %></br>
+        <span style="font-size:10px;"><%= user.introduction %></span>
+      </th>
+    </tr>
   <% if user.id == current_user.id %>
     <tr><th><%= user.email%></th></tr>
     <tr><th><%= link_to "プロフィール編集", edit_user_path(user) %></th></tr>
