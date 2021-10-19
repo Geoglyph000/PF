@@ -1,22 +1,17 @@
+<% provide(:title, "#{@post.user.user_name}さんの#{@post.title}") %>
+
 <div class="container m-2 mx-auto">
   <h2>記念日詳細</h2>
     <div class="row">
 
      <div class="col-md-3">
       <h4>記念日を作った人</h4>
-      <div class="m-2 text-center"><%= attachment_image_tag @post.user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border" %></div>
-       <table class="table">
-        <tbody>
-          <tr><th><%= @post.user.user_name %></th></tr>
-          <tr><th><%= @post.user.introduction%></th></tr>
-            <tr><th><%= @post.user.email%></th></tr>
-            <tr><th><%= link_to "ユーザー編集", edit_admin_user_path(@post.user) %></th></tr>
-          <tr><th><%= link_to "いいねした記念日", favorite_path(@post.user) %></th></tr>
-        </tbody>
-       </table>
+      <div class="border border-secondary rounded mb-2" style="background-color:#f4f4f4">
+          <%= render 'admin/users/info', user: @post.user %>
+        </div>
      </div>
 
-     <div class="col-md-9">
+     <div class="col-md-9 order-first order-md-last">
        <h3>記念日</h3>
         <table class="table table-inverse">
           <thead class="text-center">
@@ -44,10 +39,24 @@
         <%# いいね数表示 %>
         <i class="fas fa-star fav-btn"></i><%= @post.favorites.count %>
 
-          <%= link_to "編集", edit_admin_post_path %>
-          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%# ジャンル機能 %>
+          <% @post.genres.each do |genre| %>
+            <span class="border rounded p-1">
+              <%= link_to genre_index_path(genre.id) do %>
+                <i class="fas fa-tag text-black-50"><%= genre.name %></i>
+              <% end %>
+            </span>
+          <% end %>
 
-        <%= link_to "一覧に戻る", admin_posts_path %>
+
+
+        <div class="mx-1 ml-auto">
+          <%= link_to "編集", edit_admin_post_path %>
+            |
+          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+            |
+          <%= link_to "一覧に戻る", admin_posts_path %>
+        </div>
 
      </div>
 
