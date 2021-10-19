@@ -5,23 +5,9 @@
     <div class="row">
 
      <div class="col-md-3">
-      <div class="m-2 text-center"><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border" %></div>
-       <table class="table">
-        <tbody>
-          <tr>
-            <th><%= @user.user_name %></th>
-            <% if @user.is_active == true %>
-              <div class="text-success">有効</div>
-            <% else %>
-              <div class="text-secondary">退会済み</div>
-            <% end %>
-          </tr>
-          <tr><th><%= @user.introduction%></th></tr>
-          <tr><th><%= @user.email%></th></tr>
-          <tr><th><%= link_to "ユーザーの編集", edit_admin_user_path(@user) %></th></tr>
-          <tr><th><%= link_to "いいねした記念日", favorite_path(@user) %></th></tr>
-        </tbody>
-       </table>
+      <div class="border border-secondary rounded mb-2" style="background-color:#f4f4f4">
+          <%= render 'admin/users/info', user: @user %>
+        </div>
      </div>
 
      <div class="col-md-9">

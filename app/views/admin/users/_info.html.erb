@@ -1,0 +1,28 @@
+<div class="m-2 text-center">
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.png", size: '100x100', class: "rounded border", style: "background-color:#ffffff" %>
+</div>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>
+        <%= user.user_name %></br>
+        <span style="font-size:10px;"><%= user.introduction %></span>
+      </th>
+    </tr>
+    <tr>
+      <th>ステータス：
+        <% if user.is_active %>
+          <span class="text-success">有効</span>
+        <% else %>
+          <span class="text-secondary">退会済み</span>
+        <% end %>
+      </th>
+    </tr>
+    <tr><th><%= user.email%></th></tr>
+    <tr><th><%= link_to "ユーザー編集", edit_user_path(user) %></th></tr>
+    <tr><th><%= link_to "いいねした記念日", favorite_path(user) %></th></tr>
+  </tbody>
+</table>
+
+<%# 貼り付け用 %>
+<%# render 'admin/users/info', user: @user %>
