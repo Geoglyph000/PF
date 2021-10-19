@@ -7,7 +7,11 @@
 
  <div class="row">
     <% if @posts.exists? %>
-      <%= render 'public/posts/table', posts: @posts %>
+      <% if admin_signed_in? %>
+        <%= render 'admin/posts/table', posts: @posts %>
+      <% else %>
+        <%= render 'public/posts/table', posts: @posts %>
+      <% end %>
     <% else %>
       <span>該当する投稿はありません。
       記念日を<%= link_to "投稿", new_post_path %>してみませんか？</span>

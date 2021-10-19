@@ -39,10 +39,24 @@
         <%# いいね数表示 %>
         <i class="fas fa-star fav-btn"></i><%= @post.favorites.count %>
 
-          <%= link_to "編集", edit_admin_post_path %>
-          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%# ジャンル機能 %>
+          <% @post.genres.each do |genre| %>
+            <span class="border rounded p-1">
+              <%= link_to genre_index_path(genre.id) do %>
+                <i class="fas fa-tag text-black-50"><%= genre.name %></i>
+              <% end %>
+            </span>
+          <% end %>
 
-        <%= link_to "一覧に戻る", admin_posts_path %>
+
+
+        <div class="mx-1 ml-auto">
+          <%= link_to "編集", edit_admin_post_path %>
+            |
+          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+            |
+          <%= link_to "一覧に戻る", admin_posts_path %>
+        </div>
 
      </div>
 
