@@ -1,8 +1,8 @@
-<% provide(:title, "#{@date.to_s}の記念日一覧") %>
+<% provide(:title, "#{@date.strftime("%m月%d日")}の記念日一覧") %>
 
 <div class="container m-2 mx-auto">
   <div class="row">
-      <h2><%= @date %>の記念日一覧</h2>
+      <h2><%= @date.strftime("%m月%d日") %>の記念日一覧</h2>
       <div class="m-2 ml-auto">
         <%= link_to "< 前の日", date_index_path(@yesterday) %> |
         <%= link_to "次の日 >", date_index_path(@tomorrow) %>
