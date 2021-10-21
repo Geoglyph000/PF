@@ -6,10 +6,10 @@ class Public::PostsController < ApplicationController
   end
 
   def date_index #特定日の全投稿一覧
-    @date = params[:date].gsub(/-/,'') #日時計算用にハイフンを除外
-    @tomorrow = (@date.to_i + 1).to_s
-    @yesterday = (@date.to_i - 1).to_s
-    @posts = Post.where(date: @date).where("(is_private = ?) OR (user_id = ?)", false, current_user) #日付→公開ポストの順で抽出
+    @date = params[:date].to_date
+    @tomorrow = @date.tomorrow
+    @yesterday = @date.yesterday
+    @posts = Post.where(date: @date.to_s).where("(is_private = ?) OR (user_id = ?)", false, current_user) #日付→公開ポストの順で抽出
   end
 
   def create
